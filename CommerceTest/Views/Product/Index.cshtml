@@ -1,0 +1,98 @@
+﻿@model List<CommerceTest.Models.product>
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h4>Products</h4>
+<div class="alert alert-@ViewBag.alert">- - <b>@ViewBag.regist</b>- -</div>
+<form action="/Product/Index" method="post">
+    <table>
+        <tr>
+            <td style="padding: 10px">Name Product</td>
+            <td style="padding: 10px">
+                <input class="form-control" type="text" id="name" name="name" required />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px">Description Product</td>
+            <td style="padding: 10px">
+                <input class="form-control" type="text" id="desc_product" name="description" required />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px">Serial Product</td>
+            <td style="padding: 10px">
+                <input class="form-control" type="number" id="serial" maxlength="10"  name="serial" required />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px">Price Product</td>
+            <td style="padding: 10px">
+                <input class="form-control" type="number" id="price" maxlength="99999999" name="price" required />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px">Category Product</td>
+            <td style="padding: 10px">
+                <select id="category" class="form-control" name="category" >
+                    @foreach (var listItem in ViewBag.category)
+                    {
+                        <option value="@listItem.id_category">
+                            @listItem.name_category
+                        </option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px"></td>
+            <td>
+                <button class="btn btn-success" type="submit" name="btnRegister">
+                    <span class="glyphicon glyphicon-save">Save</span>
+                </button>                
+            </td>
+        </tr>
+    </table>
+</form>
+<br />
+<br />
+<table id="table_product" class="table table-bordered">
+    <thead style="background-color:black; color: white">
+        <tr>            
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Serial</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th style="text-align:center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>               
+                <td>@item.name_product</td>
+                <td>@item.desc_product</td>
+                <td>@item.serial_product</td>
+                <td>@item.price_product</td>
+                <td>@item.id_category</td>
+                <td style="text-align:center">
+                    <button class="btn btn-warning" type="button" id="btnUpdate" name="btnUpdate" onclick="location.href='../Product/EditProduct?id=@item.id_product'">
+                        <span class="glyphicon glyphicon-edit">
+                            Update
+                        </span>
+                    </button>
+                    <button class="btn btn-warning" type="button" id="btnDelete" name="btnDelete" onclick="location.href='../Product/DeleteProduct?id=@item.id_product'">
+                        <span class="glyphicon glyphicon-trash">
+                            Delete
+                        </span>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

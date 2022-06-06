@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My Ecommerce Test</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body style="background: -webkit-linear-gradient(90deg, ligthgray 25%,lighstellblue 75%)">
+    <header style="background-color:black;color:white;text-align:center">
+       <br/> <h3>Page Product</h3><br />
+    </header>
+    <nav class="row" style="background-color:gray;height:40px;margin:1px">
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="location.href='../Product/Index'">Product</button>
+        </div>
+    </nav>
+    <main class="row" style="margin:2%;background-color:beige;width:96%">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+    <footer style="background-color:black;color:white; text-align:center">
+        <br />
+        <small>
+            Prueba de Ecommerce
+        </small>
+        <br /><br />
+    </footer>
+</body>
+</html>

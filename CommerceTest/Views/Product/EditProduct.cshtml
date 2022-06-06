@@ -1,0 +1,60 @@
+﻿@model CommerceTest.Models.product
+
+@{
+    ViewBag.Title = "Update Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h4>Products</h4>
+<div class="alert alert-@ViewBag.alert">- - <b>@ViewBag.regist</b>- -</div>
+<form action="/Product/EditProduct" method="post">
+    <input type="hidden" id="id" name="id" value="@Model.id_product"/>
+    <table>
+        <tr>
+            <td style="padding: 10px">Name Product</td>
+            <td style="padding: 10px">
+                <input class="form-control" value="@Model.name_product" type="text" id="name" name="name" required />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px">Description Product</td>
+            <td style="padding: 10px">
+                <input class="form-control" value="@Model.desc_product" type="text" id="desc_product" name="description" required />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px">Serial Product</td>
+            <td style="padding: 10px">
+                <input class="form-control" type="number" value="@Model.serial_product" id="serial" maxlength="10" name="serial" required />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px">Price Product</td>
+            <td style="padding: 10px">
+                <input class="form-control" type="number" value="@Model.price_product" id="price" maxlength="99999999" name="price" required />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px">Category Product</td>
+            <td style="padding: 10px">
+                <select id="category" class="form-control" name="category">
+                    @foreach (var listItem in ViewBag.category)
+                    {
+                        <option value="@listItem.id_category">
+                            @listItem.name_category
+                        </option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px"></td>
+            <td>
+                <button class="btn btn-success" type="submit" name="btnRegister">
+                    <span class="glyphicon glyphicon-save">Save</span>
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
